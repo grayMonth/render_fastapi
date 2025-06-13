@@ -6,6 +6,8 @@ from fastapi.responses import HTMLResponse #インポート
 
 import random  # randomライブラリを追加
 
+import copy    # copyライブラリを追加
+
 app = FastAPI()
 
 
@@ -49,5 +51,11 @@ def index():
     return HTMLResponse(content=html_content, status_code=200)
 
 @app.post("/present")
-async def give_present(present):
-    return {"response": f"サーバです。メリークリスマス！ {present}ありがとう。お返しはキャンディーです。"}  # f文字列というPythonの機能を使っている
+async def give_present(request):
+    charList_request = list(request)
+    offer = copy.copy(charList_request)
+    for i in range(len(charList_request)):
+        offer[i] = charList_request[len(charList_request) - (i + 1)]
+    response = "".join(offer)
+    print(response)
+    return {"response": f"サーバです。メリークリスマス！ {request}ありがとう。お返しは{response}です。"}  # f文字列というPythonの機能を使っている
