@@ -41,10 +41,62 @@ def index():
     html_content = """
     <html>
         <head>
-            <title>Some HTML in here</title>
+            <title>HTML Returned!</title>
+            <style>
+                .marquee-wrapper {
+                    width: 100%;
+                    overflow: hidden;
+                    background: #f0f0f0;
+                    white-space: nowrap;
+                }
+                .marquee-wrapper:hover .marquee-text {
+                    animation-play-state: paused;
+                }
+                .marquee-text {
+                    display: inline-block;
+                    padding-left: 100%; /* テキストを右端の外側に配置 */
+                    animation: scroll-left 15s linear infinite;
+                }
+                .marquee-text p {
+                    margin: 0;
+                    padding: 0;
+                    font-size: 1.2em;
+                }
+                /* 各速度クラスごとに異なる速度設定 */
+                .slow {
+                    animation: scroll-left 20s linear infinite;
+                }
+                .medium {
+                    animation: scroll-left 10s linear infinite;
+                }
+                .fast {
+                    animation: scroll-left 5s linear infinite;
+                }
+
+                @keyframes scroll-left {
+                    0% {
+                        transform: translateX(0%);
+                    }
+                    100% {
+                        /* テキストが左端の外側まで移動したら消える */
+                        transform: translateX(-100%);
+                    }
+                }
+            </style>
         </head>
         <body>
-            <h1>Look ma! HTML!</h1>
+            <h1>Scroll Texts with HTML!</h1>
+            <div class="marquee-wrapper">
+                <div class="marquee-text slow">
+                    <p>のんびり歩くことも大切さ</p>
+                </div>
+                <div class="marquee-text medium">
+                    <p>焦らずに一歩一歩着実に</p>
+                </div>
+                <div class="marquee-text fast">
+                    <p>行けるところまで駆けていくよ！</p>
+                </div>
+            </div>
         </body>
     </html>
     """
