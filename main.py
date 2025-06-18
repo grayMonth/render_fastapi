@@ -90,9 +90,15 @@ def index():
                 <div class="marquee-text slow">
                     <p>のんびり歩くことも大切さ</p>
                 </div>
+            </div>
+
+            <div class="marquee-wrapper">
                 <div class="marquee-text medium">
                     <p>焦らずに一歩一歩着実に</p>
                 </div>
+            </div>
+
+            <div class="marquee-wrapper">
                 <div class="marquee-text fast">
                     <p>行けるところまで駆けていくよ！</p>
                 </div>
